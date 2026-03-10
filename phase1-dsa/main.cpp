@@ -1,4 +1,5 @@
 #include "include/transaction.h"
+#include "include/budget.h"
 #include <iostream>
 using namespace std;
 
@@ -46,6 +47,37 @@ int main() {
     cout << "\n--- Delete Transaction #4 (Metro Card) ---\n";
     ledger.deleteTransaction(4);
     ledger.printAll();
+
+
+
+    // ── BUDGET TRACKER TEST ──────────────────────
+cout << "\n==============================\n";
+cout << "  SmartSpend Budget Tracker   \n";
+cout << "==============================\n\n";
+
+BudgetTracker budget;
+
+// Set monthly budgets
+budget.setBudget("Food",      3000.0);
+budget.setBudget("Transport", 1000.0);
+budget.setBudget("Housing",   9000.0);
+
+// Add spending (same as your transactions)
+budget.addSpending("Food",      340.0);   // Zomato
+budget.addSpending("Food",     1200.0);   // Groceries
+budget.addSpending("Transport", 500.0);   // Metro Card
+budget.addSpending("Housing",  8000.0);   // Rent
+
+// Print full budget table
+budget.printAllBudgets();
+
+// Check one specific category
+budget.checkCategory("Food");
+
+// Test warning — add more food spending
+cout << "\nAdding Rs.1200 more to Food...\n";
+budget.addSpending("Food", 1200.0);
+budget.checkCategory("Food");
 
     return 0;
 }
