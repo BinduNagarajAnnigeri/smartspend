@@ -1,3 +1,4 @@
+#include "include/alerts.h"
 #include "include/transaction.h"
 #include "include/budget.h"
 #include <iostream>
@@ -78,6 +79,28 @@ budget.checkCategory("Food");
 cout << "\nAdding Rs.1200 more to Food...\n";
 budget.addSpending("Food", 1200.0);
 budget.checkCategory("Food");
+
+// ── HEAP ALERT SYSTEM ────────────────────────────────────────
+cout << "\n==============================\n";
+cout << "  SmartSpend Alert System     \n";
+cout << "==============================\n\n";
+
+AlertSystem alerts;
+
+// Add categories that are overspent
+// (spending > limit triggers an alert)
+alerts.addAlert("Food",      2740.0, 2000.0);   // overspent by 740
+alerts.addAlert("Housing",   9500.0, 9000.0);   // overspent by 500
+alerts.addAlert("Transport", 1200.0, 1000.0);   // overspent by 200
+
+// Show the single worst — O(1)
+alerts.showTopAlert();
+
+// Show all in order — worst first
+alerts.showAllAlerts();
+
+cout << "\nTotal categories in alert: "
+     << alerts.getAlertCount() << "\n";
 
     return 0;
 }
