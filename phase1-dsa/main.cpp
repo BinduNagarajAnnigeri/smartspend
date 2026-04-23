@@ -1,3 +1,4 @@
+#include "include/goals.h"
 #include "include/alerts.h"
 #include "include/transaction.h"
 #include "include/budget.h"
@@ -102,5 +103,31 @@ alerts.showAllAlerts();
 cout << "\nTotal categories in alert: "
      << alerts.getAlertCount() << "\n";
 
+
+// ── SAVINGS GOAL + DIJKSTRA ───────────────────────────────────
+cout << "\n==============================\n";
+cout << "  SmartSpend Savings Goals    \n";
+cout << "==============================\n\n";
+
+// Goal: Save Rs.50,000 for a laptop
+// Currently have Rs.5,000 saved
+SavingsGoal laptop("Laptop Fund", 50000.0, 5000.0);
+
+// Add spending cut options (edges in the graph)
+// category, how much saved/month, difficulty (lower = easier)
+laptop.addCutOption("Eating Out",    1500.0, 2.0);  // easy cut
+laptop.addCutOption("Transport",      500.0, 1.0);  // very easy
+laptop.addCutOption("Entertainment", 2000.0, 4.0);  // hard cut
+laptop.addCutOption("Shopping",      3000.0, 5.0);  // very hard
+laptop.addCutOption("Subscriptions",  300.0, 1.0);  // very easy
+
+// Show goal status
+laptop.showGoalStatus();
+
+// Show all options
+laptop.showCutOptions();
+
+// Run Dijkstra — find optimal path
+laptop.findOptimalPath();
     return 0;
 }
