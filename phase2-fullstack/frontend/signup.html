@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartSpend — Sign Up</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col-6 offset-3">
+          <div class="card p-4 shadow-sm">
+            <!-- Logo -->
+            <div class="text-center mb-4">
+              <img
+                src="images/logoName.png"
+                alt="SmartSpend"
+                style="width: 200px"
+              />
+              <p class="text-muted mt-2" style="font-size: 14px">
+                Create your account
+              </p>
+            </div>
+
+            <form class="needs-validation" novalidate>
+              <!-- Full Name -->
+              <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input
+                  name="name"
+                  id="name"
+                  type="text"
+                  placeholder="enter your full name"
+                  class="form-control"
+                  required
+                />
+                <div class="invalid-feedback">Name is required.</div>
+              </div>
+
+              <!-- Email -->
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input
+                  name="email"
+                  id="email"
+                  type="email"
+                  placeholder="enter your email"
+                  class="form-control"
+                  required
+                />
+                <div class="invalid-feedback">Please enter valid email.</div>
+              </div>
+
+              <!-- Password -->
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <div class="input-group has-validation">
+                  <input
+                    name="password"
+                    id="password"
+                    type="password"
+                    placeholder="enter your password"
+                    class="form-control"
+                    required
+                  />
+                  <span
+                    class="input-group-text"
+                    id="togglePassword"
+                    style="cursor: pointer"
+                  >
+                    <i class="fa-regular fa-eye" id="eyeIcon"></i>
+                  </span>
+                </div>
+                <div class="invalid-feedback">Password is required.</div>
+              </div>
+
+              <!-- Confirm Password -->
+              <div class="mb-3">
+                <label for="confirmPassword" class="form-label"
+                  >Confirm Password</label
+                >
+                <div class="input-group has-validation">
+                  <input
+                    name="confirmPassword"
+                    id="confirmPassword"
+                    type="password"
+                    placeholder="re-enter your password"
+                    class="form-control"
+                    required
+                  />
+
+                  <span
+                    class="input-group-text"
+                    id="toggleConfirm"
+                    style="cursor: pointer"
+                  >
+                    <i class="fa-regular fa-eye" id="eyeIconConfirm"></i>
+                  </span>
+                </div>
+                <div class="invalid-feedback">Passwords do not match.</div>
+              </div>
+
+              <!-- Sign Up Button -->
+              <button class="btn btn-success w-100 mt-2">Create Account</button>
+
+              <!-- Divider -->
+              <div class="divider-text mt-3">Or</div>
+
+              <!-- Google Button -->
+              <button
+                type="button"
+                class="btn w-100 mt-2 google-btn d-flex align-items-center position-relative"
+              >
+                <img
+                  src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+                  width="22"
+                  height="22"
+                  style="position: absolute; left: 14px"
+                />
+                <span class="w-100 text-center">Sign up with Google</span>
+              </button>
+
+              <!-- Login Link -->
+              <p class="signup-text text-center mt-3 mb-0">
+                Already have an account? <a href="login.html">Login</a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+      const form = document.querySelector(".needs-validation");
+      const password = document.getElementById("password");
+      const confirmPassword = document.getElementById("confirmPassword"); // only once
+
+      // Form submit validation
+      form.addEventListener("submit", function (e) {
+        validatePasswords();
+
+        if (!form.checkValidity()) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+
+        form.classList.add("was-validated");
+      });
+
+      // Check whether passwords match
+      function validatePasswords() {
+        if (password.value !== confirmPassword.value) {
+          confirmPassword.setCustomValidity("Passwords do not match");
+        } else {
+          confirmPassword.setCustomValidity("");
+        }
+      }
+
+      password.addEventListener("input", validatePasswords);
+      confirmPassword.addEventListener("input", validatePasswords);
+
+      // Eye toggle — password
+      const togglePassword = document.getElementById("togglePassword");
+      const eyeIcon = document.getElementById("eyeIcon");
+
+      togglePassword.addEventListener("click", function () {
+        if (password.type === "password") {
+          password.type = "text";
+          eyeIcon.classList.replace("fa-eye", "fa-eye-slash");
+        } else {
+          password.type = "password";
+          eyeIcon.classList.replace("fa-eye-slash", "fa-eye");
+        }
+      });
+
+      // Eye toggle — confirm password
+      const toggleConfirm = document.getElementById("toggleConfirm");
+      const eyeIconConfirm = document.getElementById("eyeIconConfirm");
+
+      toggleConfirm.addEventListener("click", function () {
+        if (confirmPassword.type === "password") {
+          confirmPassword.type = "text";
+          eyeIconConfirm.classList.replace("fa-eye", "fa-eye-slash");
+        } else {
+          confirmPassword.type = "password";
+          eyeIconConfirm.classList.replace("fa-eye-slash", "fa-eye");
+        }
+      });
+    </script>
+  </body>
+</html>

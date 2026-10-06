@@ -1,0 +1,288 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+/* ── BASE ── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f0f2f5;
+  min-height: 100vh;
+}
+
+/* ── CARD ── */
+.card {
+  border: 1.5px solid rgba(25, 135, 84, 0.5) !important;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(25, 135, 84, 0.12);
+}
+
+/* ── TITLE ── */
+.card h2 {
+  font-weight: 700;
+  font-size: 24px;
+  color: #1a1a2e;
+  letter-spacing: -0.5px;
+}
+
+/* ── LOGIN BUTTON ── */
+.btn-success {
+  background-color: #198754;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition:
+    background-color 0.2s,
+    transform 0.1s;
+}
+
+.btn-success:hover {
+  background-color: #157347;
+  transform: translateY(-1px);
+}
+
+.btn-success:active {
+  transform: translateY(0);
+}
+
+/* ── FORGOT PASSWORD ── */
+.forgot-link {
+  display: block;
+  text-align: right;
+  font-size: 14px;
+  color: #198754;
+  text-decoration: none;
+  margin-bottom: 16px;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+/* ── LABELS ── */
+.form-label {
+  font-weight: 500;
+  font-size: 14px;
+  color: #444;
+}
+
+/* ── INPUTS ── */
+.form-control {
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  border: 1.5px solid #d7d5d5;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.form-control:focus {
+  border-color: #188f57;
+  box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.12);
+}
+
+/* placeholder text */
+::placeholder {
+  color: #ced4da;
+  font-weight: 300;
+  font-size: 13px;
+}
+
+/* ── GOOGLE BUTTON ── */
+.google-btn {
+  border: 1.5px solid #dadce0;
+  border-radius: 10px;
+  color: #3c4043;
+  background: #f1f3f4;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 11px;
+  transition:
+    background-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.google-btn:hover {
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  color: #3c4043;
+  border-color: #dadce0;
+}
+
+/* ── SIGNUP LINK ── */
+.signup-text {
+  font-size: 14px;
+  color: #666;
+}
+
+.signup-text a {
+  color: #198754;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.signup-text a:hover {
+  text-decoration: underline;
+}
+
+/* ── OR DIVIDER ── */
+.divider-text {
+  color: #a4a3a3;
+  font-size: 13px;
+  position: relative;
+  text-align: center;
+  margin: 16px 0;
+}
+
+.divider-text::before,
+.divider-text::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 42%;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.divider-text::before {
+  left: 0;
+}
+.divider-text::after {
+  right: 0;
+}
+
+.input-group .form-control {
+  border-radius: 10px 0 0 10px;
+}
+
+.input-group .input-group-text {
+  background: white;
+  border: 1.5px solid #d7d5d5;
+  border-left: none;
+  border-radius: 0 10px 10px 0;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.input-group .input-group-text:hover {
+  color: #198754;
+}
+
+/* ── INPUT GROUP VALIDATION FIX ── */
+.input-group ~ .invalid-feedback {
+  display: none;
+}
+
+.was-validated .input-group ~ .invalid-feedback {
+  display: block;
+}
+
+.was-validated .input-group:has(.form-control:valid) ~ .invalid-feedback {
+  display: none;
+}
+/* ── CHECKBOX ── */
+.form-check-input {
+  border-color: #198754;
+}
+
+.form-check-input:checked {
+  background-color: #198754;
+  border-color: #198754;
+}
+
+.form-check-input:focus {
+  border-color: #198754;
+  box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.15);
+}
+/* ── DASHBOARD LAYOUT ── */
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background: #ffffff;
+  border-right: 1px solid #e0e0e0;
+  padding: 24px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+}
+
+.main-content {
+  margin-left: 240px;
+  padding: 32px;
+  flex: 1;
+  background: #f0f2f5;
+}
+
+/* ── SIDEBAR ── */
+.sidebar-logo {
+  padding: 20px 24px;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 12px;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 0 12px;
+}
+
+.sidebar-nav .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 16px;
+  border-radius: 10px;
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  margin-bottom: 4px;
+  transition: all 0.2s;
+}
+
+.sidebar-nav .nav-link:hover {
+  background: #f0f2f5;
+  color: #198754;
+}
+
+.sidebar-nav .nav-link.active {
+  background: rgba(25, 135, 84, 0.1);
+  color: #198754;
+  font-weight: 600;
+}
+
+.sidebar-nav .nav-link i {
+  width: 18px;
+  text-align: center;
+  font-size: 15px;
+}
+
+/* ── LOGOUT ── */
+.sidebar-logout {
+  position: absolute;
+  bottom: 24px;
+  left: 0;
+  right: 0;
+  padding: 0 12px;
+}
+
+.sidebar-logout .nav-link {
+  color: #dc3545;
+}
+
+.sidebar-logout .nav-link:hover {
+  background: rgba(220, 53, 69, 0.08);
+  color: #dc3545;
+}
