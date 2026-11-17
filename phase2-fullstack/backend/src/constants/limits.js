@@ -1,0 +1,1 @@
+export const MAX_AMOUNT_PAISE = 100_000_000;
